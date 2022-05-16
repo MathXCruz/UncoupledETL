@@ -15,7 +15,7 @@ async def main():
     poke_data = await poke_extractor.get_data(get_multiple_data)
     transformed_wow = WoWTransformer(wow_data).transform()
     transformed_poke = PokeTransformer(poke_data).transform()
-    #load.use_strategy(strategy, transformed_data)
+    # load.use_strategy(strategy, transformed_data)
 
 
 if __name__ == '__main__':

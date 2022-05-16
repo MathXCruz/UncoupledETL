@@ -1,6 +1,7 @@
 from typing import Protocol, List
 from uncoupledetl.data_types import PokeSchema, PokeORM, WoWSchema
 
+
 class TransformerFactory(Protocol):
     def __init__(self, data: dict) -> None:
         pass
@@ -95,11 +96,11 @@ def poketypes_to_string(pokemon: List[PokeSchema]) -> List[PokeSchema]:
 
 def parse_wow_dict(data: dict) -> WoWSchema:
     wow_dict = {
-    'name': data['name'],
-    'race': data['race'],
-    'Class': data['class'],
-    'active_spec_name': data['active_spec_name'],
-    'gender': data['gender'],
-    'faction': data['faction']
-}
+        'name': data['name'],
+        'race': data['race'],
+        'Class': data['class'],
+        'active_spec_name': data['active_spec_name'],
+        'gender': data['gender'],
+        'faction': data['faction'],
+    }
     return WoWSchema(**wow_dict)

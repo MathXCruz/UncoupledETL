@@ -6,6 +6,7 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
+
 class PokeSchema(BaseModel):
     id: int = Field(gt=0, description='ID of the pokemon')
     name: str = Field(description='Name of the pokemon')
