@@ -34,7 +34,8 @@ class APIExtractor:
         """Uses the extraction strategy chosen to extract the data.
 
         Args:
-            get_strategy (Callable[ [str, Optional[List[str]], Optional[dict], Optional[dict]], List[dict] ]): The extraction strategy to use.
+            get_strategy (Callable[ [str, Optional[List[str]], Optional[dict],
+             Optional[dict]], List[dict] ]): The extraction strategy to use.
 
         Returns:
             List[dict]: The extracted data.

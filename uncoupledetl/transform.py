@@ -30,6 +30,7 @@ class WoWTransformer:
 
 def parse_poke_dict(pokemon: dict) -> PokeSchema:
     """Return the parsed data of the pokemon.
+
     Args:
         pokemon (dict): The dictionary of the pokemon data.
     Returns:
@@ -48,6 +49,7 @@ def parse_poke_dict(pokemon: dict) -> PokeSchema:
 
 def parse_poke_batch(pokemon: List[dict]) -> List[PokeSchema]:
     """Return the parsed data of all the pokemon.
+
     Args:
         pokemon (List[dict]): The list of all the pokemon data.
     Returns:
@@ -58,6 +60,7 @@ def parse_poke_batch(pokemon: List[dict]) -> List[PokeSchema]:
 
 def pydantic_to_pokeorm(pokemon: List[PokeSchema]) -> List[PokeORM]:
     """Convert the pydantic data to the ORM data.
+
     Args:
         pokemon (List[PokeSchema]): The list of all the pokemon data.
     Returns:
@@ -83,6 +86,7 @@ def pydantic_to_pokeorm(pokemon: List[PokeSchema]) -> List[PokeORM]:
 
 def poketypes_to_string(pokemon: List[PokeSchema]) -> List[PokeSchema]:
     """Convert the types of the pokemon to a comma separated string.
+
     Args:
         pokemon (List[PokeSchema]): The list of all the pokemon data.
     Returns:
@@ -95,6 +99,14 @@ def poketypes_to_string(pokemon: List[PokeSchema]) -> List[PokeSchema]:
 
 
 def parse_wow_dict(data: dict) -> WoWSchema:
+    """Return the parsed data of the wow character.
+
+    Args:
+        data (dict): The dictionary of the wow character data.
+
+    Returns:
+        WoWSchema: The parsed data of the wow character in a pydantic object.
+    """
     wow_dict = {
         'name': data['name'],
         'race': data['race'],
