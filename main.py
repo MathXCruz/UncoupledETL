@@ -8,7 +8,6 @@ from uncoupledetl.load import Loader, load_to_local_database
 from uncoupledetl.variables import URL, ENDPOINTS, WOW_URL, WOW_ENDPOINT
 import asyncio
 import logging
-import traceback
 from sentry_sdk.integrations.logging import LoggingIntegration
 import sentry_sdk
 import os
@@ -44,7 +43,5 @@ if __name__ == '__main__':
     try:
         asyncio.run(main())
     except Exception as e:
-        tb = ''.join(traceback.format_tb(e.__traceback__))
-        tb = tb.replace('\n', ' - ')
-        logging.critical(f'main(uncoupledetl): unexpected error - {e} {tb}')
+        logging.critical(f'main(uncoupledetl): unexpected error - {e}')
         raise e
