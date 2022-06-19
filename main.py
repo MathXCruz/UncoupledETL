@@ -4,8 +4,14 @@ from uncoupledetl.extract import (
     get_multiple_data,
 )
 from uncoupledetl.transform import WoWTransformer, PokeTransformer
-from uncoupledetl.load import Loader, load_to_local_database
-from uncoupledetl.variables import URL, ENDPOINTS, WOW_URL, WOW_ENDPOINT
+from uncoupledetl.load import Loader, load_to_database
+from uncoupledetl.variables import (
+    URL,
+    ENDPOINTS,
+    WOW_URL,
+    WOW_ENDPOINT,
+    DOCKER_DATABASE,
+)
 import asyncio
 import logging
 from sentry_sdk.integrations.logging import LoggingIntegration
@@ -20,7 +26,9 @@ async def main():
     poke_data = await poke_extractor.get_data(get_multiple_data)
     transformed_wow = WoWTransformer(wow_data).transform()
     transformed_poke = PokeTransformer(poke_data).transform()
-    await Loader(transformed_poke).load_strategy(load_to_local_database)
+    await Loader(transformed_poke).load_strategy(
+        load_to_database, DOCKER_DATABASE
+    )
     logging.info('Test run completed.')
 
 

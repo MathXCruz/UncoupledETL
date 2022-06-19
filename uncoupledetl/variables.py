@@ -7,3 +7,4 @@ WOW_ENDPOINT = 'characters/profile?region=us&realm=hakkar&name=Golois'
 LOCAL_DATABASE = (
     'sqlite+aiosqlite:////home/matheus/Poke_API/poke_api_training.db'
 )
+DOCKER_DATABASE = 'sqlite+aiosqlite:////app/poke_api_training.db'

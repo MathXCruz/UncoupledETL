@@ -4,7 +4,6 @@ from sqlalchemy.ext.asyncio import (
     create_async_engine,
     AsyncSession,
 )
-from uncoupledetl.variables import LOCAL_DATABASE
 from sqlalchemy.orm import sessionmaker
 
 
@@ -12,8 +11,8 @@ class Loader:
     def __init__(self, data: object):
         self.data = data
 
-    async def load_strategy(self, load_strategy):
-        return await load_strategy(self.data)
+    async def load_strategy(self, load_strategy, db_string: str):
+        return await load_strategy(self.data, db_string)
 
 
 async def create_database(engine: AsyncEngine) -> None:
@@ -27,13 +26,14 @@ async def create_database(engine: AsyncEngine) -> None:
         await conn.run_sync(Base.metadata.create_all)
 
 
-async def load_to_local_database(data: object):
+async def load_to_database(data: object, database: str) -> None:
     """Load the data to the local database.
 
     Args:
         data (object): The data to load.
+        database (str): The database to use.
     """
-    engine = create_async_engine(LOCAL_DATABASE)
+    engine = create_async_engine(database)
     await create_database(engine)
     session = sessionmaker(engine, future=True, class_=AsyncSession)
     async with session() as s:
